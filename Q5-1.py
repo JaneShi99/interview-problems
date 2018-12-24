@@ -18,11 +18,11 @@ def func1(A,K):
 
     while equal < larger:
         #A[equal] is the next element to be classified
-        if A[equal] = K[1]:
+        if A[equal] == K[1]:
             A[smaller],A[equal] = A[equal],A[smaller]
             smaller +=1
             equal +=1
-        elif A[equal] = pivot:
+        elif A[equal] == pivot:
             equal +=1
         else: # A[equal] > pivot
             larger -= 1
@@ -43,7 +43,7 @@ def func2(A,K):
     f_pivot = K[0]
     next_piv, next_non_piv = 0, len(A) - 1
     while next_piv < next_non_piv:
-        if A[next_piv] = f_pivot:
+        if A[next_piv] == f_pivot:
             next_piv += 1
         else:
             A[next_piv],A[next_non_piv] = A[next_non_piv],A[next_piv]
@@ -68,9 +68,9 @@ def func2(A,K):
             A[smaller],A[equal] = A[equal],A[smaller]
             smaller +=1
             equal +=1
-        elif A[equal] = pivot:
+        elif A[equal] == K[2]:
             equal +=1
-        else: # A[equal] > pivot
+        else: # A[equal] == K[3]
             larger -= 1
             A[equal],A[larger] = A[larger], A[equal]
 
@@ -91,15 +91,16 @@ def func3(A):
     #falsy holds the index to last false
     #truey holds the index to last true
     falsy, truey = len(A)-1, len(A)-1
-    while falsy != 0 || truey != 0:
-        if  A[falsy]!= False and falsy >0:
+    while falsy != 0 or truey != 0:
+        if falsy > 0 and  A[falsy]!= False:
             falsy -= 1
-        elif  A[truey]!= True and truey >0:
+        elif truey > 0 and  A[truey]!= True:
             truey -= 1
         else:
-            A[falsy], A[truey] = A[truey], A[falsy]
-            truey -= 1
-            falsy -= 1
+            if falsy > 0 and truey > 0:
+                A[falsy], A[truey] = A[truey], A[falsy]
+                truey -= 1
+                falsy -= 1
     return A
 
 def main():
@@ -112,7 +113,7 @@ def main():
 
     print(func1(list_A, keys_A))
     print(func2(list_B, keys_B))
-    print(func3(list_c))
+    print(func3(list_C))
 
     
 main()
