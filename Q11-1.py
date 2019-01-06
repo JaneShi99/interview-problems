@@ -15,7 +15,7 @@ def search_greater(A,k):
             res = mid
             left = mid + 1
         else: #A[mid] < k
-            left mid + 1
+            left = mid + 1
     return result + 1
 
 # Let A be unsorted array of length n. A[0] >= A[1] and A[n-2] <= A[n-1]
@@ -46,7 +46,7 @@ def get_a_local_mim(A):
 def get_interval(A,k):
     if bsearch(A,k) == -1:
         return -1
-    else
+    else:
         return [bsearch(A,k),search_greater(A,k)-1]
 
 
